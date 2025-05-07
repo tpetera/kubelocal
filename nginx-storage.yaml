@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: nginx-storage
+  name: nginx-storage
+spec:
+  containers:
+  - image: nginx
+    name: nginx-storage
+    volumeMounts:
+      - mountPath: /scratch
+        name: scratch-volume
+  volumes:
+  - name: scratch-volume
+    emptyDir:
+      sizeLimit: 500Mi
